@@ -1,0 +1,28 @@
+from collections import deque
+def water_jug_bfs(cap_a, cap_b, target):
+    visited = set()
+    queue = deque()
+    queue.append((0, 0))  # both jugs are initially empty
+    while queue:
+        a, b = queue.popleft()
+
+        if (a, b) in visited:
+            continue
+        visited.add((a, b))
+
+        print(f"Jug A: {a} liters, Jug B: {b} liters")
+        if a == target or b == target:
+            print("Goal reached!")
+            return
+        next_states = [
+            (cap_a, b),         
+            (a, cap_b),         
+            (0, b),             
+            (a, 0),             
+            (max(0, a - (cap_b - b)), min(cap_b, b + a)),  
+            (min(cap_a, a + b), max(0, b - (cap_a - a)))
+        ]
+        for state in next_states:
+            if state not in visited:
+                queue.append(state)
+water_jug_bfs(4, 3, 2)
