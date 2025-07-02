@@ -1,0 +1,10 @@
+% Example graph
+edge(a, b, 1).
+edge(a, c, 2).
+edge(b, d, 4).
+edge(c, d, 1).
+
+heuristic(d, 0).
+heuristic(b, 3).
+heuristic(c, 2).
+heuristic(a, 5).
