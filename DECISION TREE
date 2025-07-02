@@ -1,0 +1,25 @@
+# Simple Decision Tree in Python using if-else
+
+def decision_tree(weather, temperature):
+    if weather == "Sunny":
+        if temperature == "Hot":
+            return "Don't Play"
+        else:
+            return "Play"
+    elif weather == "Rainy":
+        if temperature == "Cool":
+            return "Play"
+        else:
+            return "Don't Play"
+    elif weather == "Overcast":
+        return "Play"
+    else:
+        return "Unknown conditions"
+
+# --- Input from user ---
+weather = input("Enter weather (Sunny, Rainy, Overcast): ")
+temperature = input("Enter temperature (Hot, Mild, Cool): ")
+
+# --- Output decision ---
+decision = decision_tree(weather, temperature)
+print("Decision:", decision)
