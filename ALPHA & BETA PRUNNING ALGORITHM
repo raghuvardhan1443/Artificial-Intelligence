@@ -1,0 +1,29 @@
+def alphabeta(depth, index, is_max, values, alpha, beta):
+    if depth == 3:
+        return values[index]
+
+    if is_max:
+        max_eval = float('-inf')
+        for i in range(2):
+            val = alphabeta(depth+1, index*2+i, False, values, alpha, beta)
+            max_eval = max(max_eval, val)
+            alpha = max(alpha, val)
+            if beta <= alpha:
+                break  # Beta cut-off
+        return max_eval
+    else:
+        min_eval = float('inf')
+        for i in range(2):
+            val = alphabeta(depth+1, index*2+i, True, values, alpha, beta)
+            min_eval = min(min_eval, val)
+            beta = min(beta, val)
+            if beta <= alpha:
+                break  # Alpha cut-off
+        return min_eval
+
+# --- Input from user ---
+values = list(map(int, input("Enter 8 leaf node values (space separated): ").split()))
+
+# --- Output best value using Alpha-Beta Pruning ---
+best = alphabeta(0, 0, True, values, float('-inf'), float('inf'))
+print("Best value for Max player:", best)
