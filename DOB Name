@@ -1,0 +1,2 @@
+person(john,10,oct,2004).
+person(ram,2,feb,2005).
