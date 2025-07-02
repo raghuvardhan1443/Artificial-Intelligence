@@ -1,0 +1,3 @@
+diet(diabetes, low_sugar).
+diet(obesity, low_fat).
+diet(heart_disease, low_salt).
