@@ -1,0 +1,26 @@
+import math
+# Sigmoid activation function
+def sigmoid(x):
+    return 1 / (1 + math.exp(-x))
+# Feedforward function
+def feedforward(inputs):
+    # Example weights and biases (can be changed)
+    w1 = [0.2, 0.4]
+    w2 = [0.3, 0.7]
+    b1 = 0.5
+    b2 = -0.5
+    # Hidden layer (2 neurons)
+    h1 = sigmoid(inputs[0]*w1[0] + inputs[1]*w1[1] + b1)
+    h2 = sigmoid(inputs[0]*w2[0] + inputs[1]*w2[1] + b2)
+    # Output neuron weights and bias
+    wo = [0.6, 0.9]
+    bo = 0.1
+    # Output layer
+    output = sigmoid(h1*wo[0] + h2*wo[1] + bo)
+    return output
+# --- User Input ---
+x1 = float(input("Enter input x1: "))
+x2 = float(input("Enter input x2: "))
+# --- Output ---
+output = feedforward([x1, x2])
+print("Output of the neural network:", round(output, 4))
